@@ -44,7 +44,8 @@ lines(x = sample_df$r, y = sample_df$y, col = 'red')
 
 
 ### RSTAN model
-library('rstan')
+if(!require(rstan)) install.packages('rstan')
+library(rstan)
 options(mc.cores = parallel::detectCores())
 rstan_options(auto_write = T)
 model_code <- '
