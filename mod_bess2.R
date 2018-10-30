@@ -1,4 +1,7 @@
+#packages
+library(rstan)
 
+#parameters
 N <- 1e4 #number of points to plot
 L <- 10 #r in (0,L)
 r <- runif(N, 0, L)
@@ -44,8 +47,6 @@ lines(x = sample_df$r, y = sample_df$y, col = 'red')
 
 
 ### RSTAN model
-if(!require(rstan)) install.packages('rstan')
-library(rstan)
 options(mc.cores = parallel::detectCores())
 rstan_options(auto_write = T)
 model_code <- '
@@ -86,7 +87,7 @@ parameters {
 transformed parameters {
   real epsilon[N];
   for(n in 1:N){
-    epsilon[n] = Y[n] - (1-D)*Z[n];
+    epsilon[n] = Y[n] - (1-D)*Z[n] - D;
   }
 }
 model {
