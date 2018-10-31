@@ -5,4 +5,4 @@
 #SBATCH --mem-per-cpu=4G
 
 module load R
-Rscript mod_bess2.R
+Rscript mod_bess3.R
