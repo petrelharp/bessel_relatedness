@@ -106,7 +106,5 @@ model_fit <- stan(model_code=model_code,
                               r = sample_df$r,
                               L = L,
                               Y = sample_df$y_noise))
-summary(model_fit, pars = c('sigma', 'D', 'eta'))
-stan_hist(model_fit, pars = c('sigma', 'D', 'eta'))
-stan_trace(model_fit)
+
 saveRDS(model_fit, file = "model.rds")
